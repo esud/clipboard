@@ -1,0 +1,11 @@
+INFO
+
+CLIPBOARD_DAEMON
+Read clipboard data using "xclip" application and store it in 
+/tmp/.clipboard_{username}/{MD5_hash_of_clipboard_content} file
+
+CLIPBOARD_SELECTION  
+Read all files from /tmp/.clipboard_{username}/ and display interface with selection 
+(1 file is 1 entry) where only the beginning of the file content is shown 
+as entry name. 
+

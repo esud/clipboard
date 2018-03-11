@@ -1,0 +1,38 @@
+HOW TO DEPLOY
+- Install dependencies
+  - xclip (pacman -S xclip, apt-get install xclip)
+  - gtk2 (pacman -S gtk2, apt-get install libgtk2.0-dev)
+  - openssl (pacman -S openssl, apt-get install openssl libssl-dev)
+ 
+- Open clipboard_daemon.c and make sure that settings in RETRIEVE_CLIPBOARD_DATA_COMMAND are correct
+ 
+- Compile clipboard_daemon
+  - gcc clipboard_daemon.c -o clipboard_daemon -lcrypto
+
+- Move clipboard_daemon to application folder
+  - mv clipboard_daemon /usr/local/bin/
+  - chown root:root /usr/local/bin/clipboard_daemon
+  - chmod u+rwx,g+rx-w,o+rx-w /usr/local/bin/clipboard_daemon
+
+- Compile clipboard_selection
+  - gcc -o clipboard_selection clipboard_selection.c `pkg-config --libs --cflags gtk+-2.0`
+
+- Move clipboard_selection to application folder
+  - mv clipboard_selection /usr/local/bin/
+  - chown root:root /usr/local/bin/clipboard_selection
+  - chmod u+rwx,g+rx-w,o+rx-w /usr/local/bin/clipboard_selection
+ 
+- Open clipboard_selection_wrapper.sh and make sure that all used applications exists and all paths are correct
+ 
+- Copy clipboard_selection_wrapper.sh to application folder
+  - cp clipboard_selection_wrapper.sh /usr/local/bin/
+  - chown root:root /usr/local/bin/clipboard_selection_wrapper.sh
+  - chmod u+rwx,g+rx-w,o+rx-w /usr/local/bin/clipboard_selection_wrapper.sh
+  
+- Activate autostart of clipboard_daemon
+  - add to /root/.xinitrc (add before window manager start) 
+    /usr/local/bin/clipboard_daemon &
+      
+- Config shortcut (we recommend CTRL + B) in window manager to start the clipboard selection
+  - /usr/local/bin/clipboard_selection_wrapper.sh    
+

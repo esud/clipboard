@@ -1,0 +1,9 @@
+SHORTCUTS
+- CTRL + B: Open clipboard application (need to config this in window manager)
+- CTRL + V: 
+  - When application is active: Write selected entry to clipboard and exit 
+  - When application is terminated: Paste selected entry (paste-shortcut)
+- ENTER: Write selected entry to clipboard and exit 
+- ESC: Write last entry to clipboard and terminate the application
+- UP: Select previous clipboard entry 
+- SPACE or DOWN: Select next clipboard entry 
